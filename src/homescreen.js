@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import {
   View,
   Text,
@@ -18,11 +17,38 @@ import Icon2 from 'react-native-vector-icons/AntDesign';
 import {DrawerActions} from '@react-navigation/native';
 import { useNavigation } from '@react-navigation/native'
 import {useTheme} from '@react-navigation/native';
+import Restaurant from '../src/restaurant';
 
 import Swiper from 'react-native-swiper';
 
-const HomeScreen = ({navigation}) => {
-  const theme = useTheme();
+ const HomeScreen = ({navigation}) => {
+   const theme = useTheme();
+
+//   const [data,setData] = useState([])
+//      const [loading,setLoading]= useState(true)
+    
+
+//     console.log(data,loading)
+   
+//      const fetchData = ()=>{
+//         fetch("https://foodie-main.herokuapp.com/hotel/orderdetails")
+//         .then(res=>res.json())
+//         .then(results=>{
+    
+//              setData(results)
+//              setLoading(false)
+    
+
+//         }).catch(err=>{
+//             Alert.alert("someting went wrong")
+//         })
+//      }
+    
+//      useEffect(()=>{
+//           fetchData()
+//      },[])
+    
+//     const renderList = ((item)=>{
  
 
   return (
@@ -97,126 +123,66 @@ const HomeScreen = ({navigation}) => {
        <View style={styles.searchfield}>
        <Text style={styles.near}>TOP RESTAURANTS</Text>
        </View>
-  <TouchableOpacity  onPress={() => navigation.navigate("Hotel1") }>    
- <View style={styles.card}>
-  
-       
-          <View style={styles.cardImgWrapper}>
-          
-          
-       
-            <Image
-              source={require('../assets/logo.png')}
-              resizeMode="cover"
-              style={styles.cardImg}
-            />
+       <Restaurant/>
+         </ScrollView>
+  )
+                  }
+
+// const renderList = ((item)=>{
+
+//   return (
+//     <View>
+//      <TouchableOpacity  onPress={() => navigation.navigate("Login") }>    
+// <View style={styles.card}>
+
+
+//  <View style={styles.cardImgWrapper}>
  
-          </View>
+ 
 
-          
+//    <Image
+//      source={{uri:'https://storage.googleapis.com/swag-swami-media/2020/12/a9eca2e9-foodie-black.jpg'}}
+//      resizeMode="cover"
+//      style={styles.cardImg}
+//    />
 
-       <View style={styles.cardInfo}>
-            <Text style={styles.cardTitle}>KETTLE CHICKEN</Text>
-            <View style={styles.rate}>
-            <Icon1 name='star' size={18} color='#9d9d9f'/>
-            <Text style={{fontWeight:'bold'}}> 4.3</Text>
-            </View>
-            {/* <StarRating ratings={4} reviews={99} /> */}
-            <Text style={styles.cardDetails}>
-            Amazing description for this amazing place
-            </Text>
+//  </View>
 
-            
-          </View>
+ 
 
-          
-          </View>
-          </TouchableOpacity>
-<TouchableOpacity  onPress={() => this.props.navigation.navigate('Hotel2') }>
-          <View style={styles.card}>
-          <View style={styles.cardImgWrapper}>
-            <Image
-              source={require('../assets/logo.png')}
-              resizeMode="cover"
-              style={styles.cardImg}
-            />
-          </View>
-          
+// <View style={styles.cardInfo}>
+//    <Text style={styles.cardTitle}>{item.itemName}</Text>
+//    <View style={styles.rate}>
+//    <Icon1 name='star' size={18} color='#9d9d9f'/>
+//    <Text style={{fontWeight:'bold'}}>{item.itemRate}</Text>
+//    </View>
+   
+//    <Text style={styles.cardDetails}>
+//    {item.hotelname}
+//    </Text>
 
-       <View style={styles.cardInfo}>
-            <Text style={styles.cardTitle}>VICE ROY</Text>
-            <View style={styles.rate}>
-            <Icon1 name='star' size={18} color='#9d9d9f'/>
-            <Text style={{fontWeight:'bold'}}> 4.3</Text>
-            </View>
-            {/* <StarRating ratings={4} reviews={99} /> */}
-            <Text style={styles.cardDetails}>
-              Amazing description for this amazing place
-            </Text>
-          </View>
+   
+//  </View>
 
-          
-          </View>
-          </TouchableOpacity>
-<TouchableOpacity  onPress={() => this.props.navigation.navigate('Hotel3') }>
-         
-          <View style={styles.card}>
-          <View style={styles.cardImgWrapper}>
-            <Image
-              source={require('../assets/logo.png')}
-              resizeMode="cover"
-              style={styles.cardImg}
-            />
-          </View>
-          
+ 
+//  </View>
 
-       <View style={styles.cardInfo}>
-            <Text style={styles.cardTitle}>ORIX VILLAGE</Text>
-            {/* <StarRating ratings={4} reviews={99} /> */}
-            <View style={styles.rate}>
-            <Icon1 name='star' size={18} color='#9d9d9f'/>
-            <Text style={{fontWeight:'bold'}}> 4.3</Text>
-            </View>
-            <Text style={styles.cardDetails}>
-              Amazing description for this amazing place
-            </Text>
-          </View>
+ 
+// </TouchableOpacity> 
 
-         </View>
-         </TouchableOpacity> 
-<TouchableOpacity  onPress={() => this.props.navigation.navigate('Hotel4') }>
-          <View style={styles.card}>
-          
-          <View style={styles.cardImgWrapper}>
-            <Image
-              source={require('../assets/logo.png')}
-              resizeMode="cover"
-              style={styles.cardImg}
-            />
-          </View>
-          
+  
+//   </View>
 
-       <View style={styles.cardInfo}>
-      
-            <Text style={styles.cardTitle}>GOLDEN FAMILY Restaurant</Text>
-            {/* <StarRating ratings={4} reviews={99} /> */}
-            <View style={styles.rate}>
-            <Icon1 name='star' size={18} color='#9d9d9f'/>
-            <Text style={{fontWeight:'bold'}}> 4.3</Text>
-            </View>
-            <Text style={styles.cardDetails}>
-              Amazing description for this amazing place
-            </Text>
-          
-          </View>
+ 
+//  }
+       
+//    );
+    
+//      }
 
-          
-          </View>
-           </TouchableOpacity>
-     </ScrollView>
-  );
-};
-
+//     )
+//   }
+ 
 export default HomeScreen;
 
 const styles = StyleSheet.create({
