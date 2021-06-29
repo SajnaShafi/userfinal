@@ -24,32 +24,6 @@ import Swiper from 'react-native-swiper';
  const HomeScreen = ({navigation}) => {
    const theme = useTheme();
 
-//   const [data,setData] = useState([])
-//      const [loading,setLoading]= useState(true)
-    
-
-//     console.log(data,loading)
-   
-//      const fetchData = ()=>{
-//         fetch("https://foodie-main.herokuapp.com/hotel/orderdetails")
-//         .then(res=>res.json())
-//         .then(results=>{
-    
-//              setData(results)
-//              setLoading(false)
-    
-
-//         }).catch(err=>{
-//             Alert.alert("someting went wrong")
-//         })
-//      }
-    
-//      useEffect(()=>{
-//           fetchData()
-//      },[])
-    
-//     const renderList = ((item)=>{
- 
 
   return (
     <ScrollView style={styles.container}>
@@ -128,60 +102,7 @@ import Swiper from 'react-native-swiper';
   )
                   }
 
-// const renderList = ((item)=>{
 
-//   return (
-//     <View>
-//      <TouchableOpacity  onPress={() => navigation.navigate("Login") }>    
-// <View style={styles.card}>
-
-
-//  <View style={styles.cardImgWrapper}>
- 
- 
-
-//    <Image
-//      source={{uri:'https://storage.googleapis.com/swag-swami-media/2020/12/a9eca2e9-foodie-black.jpg'}}
-//      resizeMode="cover"
-//      style={styles.cardImg}
-//    />
-
-//  </View>
-
- 
-
-// <View style={styles.cardInfo}>
-//    <Text style={styles.cardTitle}>{item.itemName}</Text>
-//    <View style={styles.rate}>
-//    <Icon1 name='star' size={18} color='#9d9d9f'/>
-//    <Text style={{fontWeight:'bold'}}>{item.itemRate}</Text>
-//    </View>
-   
-//    <Text style={styles.cardDetails}>
-//    {item.hotelname}
-//    </Text>
-
-   
-//  </View>
-
- 
-//  </View>
-
- 
-// </TouchableOpacity> 
-
-  
-//   </View>
-
- 
-//  }
-       
-//    );
-    
-//      }
-
-//     )
-//   }
  
 export default HomeScreen;
 

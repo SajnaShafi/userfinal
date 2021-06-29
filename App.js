@@ -9,13 +9,8 @@ import MY_Profile from './src/MY_Profile';
 import Location from './src/Location';
 import Signin from './src/Signin';
 import Splashscreen from './src/Splashscreen';
-import Myorder from './src/Myorders'
-import Hotel1 from './src/hotels/menu1'
-import Hotel2 from './src/hotels/menu2'
-import Hotel3 from './src/hotels/menu3'
-import Hotel4 from './src/hotels/menu4'
-import PaymentMethod from './src/payment'
-
+import PaymentMethod from './src/payment';
+import Detail from './src/details';
 
 import { NavigationContainer } from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
@@ -42,12 +37,9 @@ export default class app extends Component {
           <Drawer.Screen name="Support" component={Support} />
           <Drawer.Screen name="Profile" component={MY_Profile}/> 
           <Drawer.Screen name="Location" component={Location}/> 
-          <Drawer.Screen name="My orders" component={Myorder}/>
-          <Drawer.Screen name="Hotel1" component={Hotel1}/>
-          <Drawer.Screen name="Hotel2" component={Hotel2}/>
-          <Drawer.Screen name="Hotel3" component={Hotel3}/>
-          <Drawer.Screen name="Hotel4" component={Hotel4}/>
+          {/* <Drawer.Screen name="My orders" component={Myorder}/> */}
           <Drawer.Screen name="Payment" component={PaymentMethod}/>
+          <Drawer.Screen name="Detail" component={Detail}/>
           </Drawer.Navigator>
       </NavigationContainer>
       

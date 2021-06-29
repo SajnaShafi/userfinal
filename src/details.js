@@ -22,7 +22,7 @@ import { useNavigation } from '@react-navigation/native'
 import {useTheme} from '@react-navigation/native';
 import Swiper from 'react-native-swiper';
 
-const Restaurant = ({navigation}) => {
+const Detail = ({navigation}) => {
   const theme = useTheme();
 
   const [data,setData] = useState([])
@@ -54,7 +54,7 @@ const Restaurant = ({navigation}) => {
       return (
         <View>
           <ScrollView>
-         <TouchableOpacity  onPress={()=>navigation.navigate("Detail",{item})}>    
+         <TouchableOpacity  onPress={()=>navigation.navigate('Login')}>    
     <View style={styles.card}>
     
     
@@ -125,7 +125,7 @@ const Restaurant = ({navigation}) => {
 
     
 
-export default Restaurant;
+export default Detail;
 
 const styles = StyleSheet.create({
   container: {

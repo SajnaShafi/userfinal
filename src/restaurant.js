@@ -11,14 +11,10 @@ import {
   FlatList
 } from 'react-native';
 
-import Icon from 'react-native-vector-icons/EvilIcons';
-import Icons from 'react-native-vector-icons/Entypo';
-import Icon1 from 'react-native-vector-icons/Entypo';
-import Icon2 from 'react-native-vector-icons/AntDesign';
-import {DrawerActions} from '@react-navigation/native';
+
 import { useNavigation } from '@react-navigation/native'
 import {useTheme} from '@react-navigation/native';
-import Swiper from 'react-native-swiper';
+
 
 const Restaurant = ({navigation}) => {
   const theme = useTheme();
@@ -51,7 +47,7 @@ const Restaurant = ({navigation}) => {
 
       return (
         <View>
-          <ScrollView>
+         
          <TouchableOpacity  onPress={()=>navigation.navigate("Detail",{item})}>    
     <View style={styles.card}>
     
@@ -92,7 +88,7 @@ const Restaurant = ({navigation}) => {
      
     </TouchableOpacity> 
     
-      </ScrollView>
+      
       </View>
     
     );
