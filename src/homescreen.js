@@ -36,12 +36,7 @@ import Swiper from 'react-native-swiper';
                           )
                         } style={{paddingLeft:7}}/> 
             
-        {/* <Icons name='location-pin' size={18} color='#37af0c'onPress={() =>
-                      navigation.navigate('Location')
-                    }  style={{paddingLeft:12}}/> 
-         <Text onPress={() =>
-                      navigation.navigate('Location')
-                    }  style={styles.place}>Kerala</Text> */}
+       
                     </View>
 
                     <View style={styles.body}>

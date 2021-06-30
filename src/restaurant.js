@@ -8,15 +8,16 @@ import {
   StatusBar,
   TouchableOpacity,
   ScrollView,
-  FlatList
+  FlatList,
+  Alert
 } from 'react-native';
 
 
 import { useNavigation } from '@react-navigation/native'
 import {useTheme} from '@react-navigation/native';
 
-
-const Restaurant = ({navigation}) => {
+const Restaurant = () => {
+  const navigation = useNavigation(); 
   const theme = useTheme();
 
   const [data,setData] = useState([])
@@ -25,30 +26,38 @@ const Restaurant = ({navigation}) => {
 
     console.log(data,loading)
    
-     const fetchData = ()=>{
-        fetch("https://foodie-main.herokuapp.com/hotel/orderdetails")
-        .then(res=>res.json())
-        .then(results=>{
-    
-             setData(results)
-             setLoading(false)
-    
 
-        }).catch(err=>{
-            Alert.alert("someting went wrong")
-        })
-     }
-    
-     useEffect(()=>{
-          fetchData()
-     },[])
-       
-     const renderList = ((item)=>{
 
+    const fetchData = ()=>{
+      fetch("https://foodie-main.herokuapp.com/hotel/homeadd")
+      .then(res=>res.json())
+      .then(results=>{
+  
+           setData(results)
+           setLoading(false)
+  
+
+      }).catch(err=>{
+          Alert.alert("someting went wrong")
+      })
+   }
+  
+   useEffect(()=>{
+        fetchData()
+   },[])
+
+  
+
+
+
+     
+   const renderList = ((item)=>{
+
+    
       return (
         <View>
          
-         <TouchableOpacity  onPress={()=>navigation.navigate("Detail",{item})}>    
+         <TouchableOpacity  onPress={()=>navigation.navigate('Detail',{item})}>    
     <View style={styles.card}>
     
     
@@ -56,24 +65,23 @@ const Restaurant = ({navigation}) => {
      
      
     
-       <Image
+     <Image
          source={{uri:'https://storage.googleapis.com/swag-swami-media/2020/12/a9eca2e9-foodie-black.jpg'}}
          resizeMode="cover"
          style={styles.cardImg}
        />
-    
      </View>
     
      
     
     <View style={styles.cardInfo}>
-       <Text style={styles.cardTitle}>{item.itemName}</Text>
+       <Text style={styles.cardTitle}>{item.productname}</Text>
        <View style={styles.rate}>
        
-       <Text style={{fontWeight:'bold'}}>${item.itemRate}</Text>
+       <Text style={{fontWeight:'bold'}}>${item.rate}</Text>
        </View>
        <Text style={styles.cardDetails}>
-       {item.quantity}
+       {item.description}
        </Text>
        <Text style={styles.cardDetails}>
        {item.hotelname}
@@ -101,15 +109,15 @@ const Restaurant = ({navigation}) => {
       return(
         <View style={{flex:1}}>
      
-         <FlatList
-               data={data}
-               renderItem={({item})=>{
-                 return renderList(item)
-               }}
-               keyExtractor={item=>item._id}
-               onRefresh={()=>fetchData()}
-               refreshing={loading}
-               />
+     <FlatList
+                    data={data}
+                        renderItem={ ({item})=> {
+                            return renderList(item)
+                        }}
+                        keyExtractor={item=>item._id}
+                        onRefresh={()=>fetchData()}
+                        refreshing={loading}
+                />
            
         </View>
       
@@ -229,4 +237,3 @@ const styles = StyleSheet.create({
   }
 
 });
-  

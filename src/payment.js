@@ -8,15 +8,19 @@ const PaymentMethod = (navigation) => {
     <View style={styles.container}>
         <Text style={styles.text}>How'd you like to pay?</Text>
       <View>
-      <Card  style={styles.button}>
+      <Card  style={styles.button}  onPress={() =>
+            navigation.navigate('My Orders')
+          }  >
         <Text style={styles.label}>Cash on delivery</Text>
         <Text style={styles.label2}>COD</Text>
         </Card>
       </View>
       <View >
-      <Card style={styles.button}>
+      <Card style={styles.button}  nPress={() =>
+            navigation.navigate('Online Pay')
+          } >
         <Text style={styles.label}>Online payment</Text>
-        <Text style={styles.label3}>UPI/Cards/Netbanking/Paytm</Text>
+        <Text style={styles.label3}>Debit/Credit</Text>
         </Card>
       </View>
         

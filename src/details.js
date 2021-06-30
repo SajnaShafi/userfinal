@@ -22,15 +22,21 @@ import { useNavigation } from '@react-navigation/native'
 import {useTheme} from '@react-navigation/native';
 import Swiper from 'react-native-swiper';
 
-const Detail = ({navigation}) => {
-  const theme = useTheme();
+const Detail = (props,{navigation,route})=>{
 
-  const [data,setData] = useState([])
-     const [loading,setLoading]= useState(true)
-    
+  const {_id,productname,
+  description,
+  quantity,
+  unit,
+  rate,
+  hotelname,
+  hoteladdressplace,
+  hotelphonenumber,
+  hoteladdresscity
+  } = props.route.params.item
+  console.log(_id)  
 
-    console.log(data,loading)
-   
+
      const fetchData = ()=>{
         fetch("https://foodie-main.herokuapp.com/hotel/orderdetails")
         .then(res=>res.json())
@@ -45,16 +51,13 @@ const Detail = ({navigation}) => {
         })
      }
     
-     useEffect(()=>{
-          fetchData()
-     },[])
-       
-     const renderList = ((item)=>{
+    
 
       return (
-        <View>
-          <ScrollView>
-         <TouchableOpacity  onPress={()=>navigation.navigate('Login')}>    
+    
+          
+          
+            
     <View style={styles.card}>
     
     
@@ -71,56 +74,54 @@ const Detail = ({navigation}) => {
      </View>
     
      
+     <ScrollView>
     
-    <View style={styles.cardInfo}>
-       <Text style={styles.cardTitle}>{item.itemName}</Text>
-       <View style={styles.rate}>
+       <Text style={styles.cardTitle}>{productname}</Text>
        
-       <Text style={{fontWeight:'bold'}}>${item.itemRate}</Text>
-       </View>
-       <Text style={styles.cardDetails}>
-       {item.quantity}
+       
+       <Text style={{fontWeight:'bold',padding:10}}>${rate}</Text>
+       <Text style={styles.cardDetail1}>
+       {quantity} {unit}
        </Text>
-       <Text style={styles.cardDetails}>
-       {item.hotelname}
+       <Text style={styles.cardDetail1}>
+       {description}
        </Text>
+      
+       
+       <Text style={styles.cardDetails}>
+        Hotel: {hotelname}
+       </Text>
+       <Text style={styles.cardDetail1}>
+       {hotelphonenumber}
+       </Text>
+       <Text style={styles.cardDetail1}>
+       {hoteladdresscity}
+       </Text>
+       <Text style={styles.cardDetail1}>
+       {hoteladdressplace}
+       </Text>
+       
+     
+     <TouchableOpacity style={styles.button}  onPress={() =>
+            navigation.navigate('Payment')
+          } >
+          <Text style={styles.buttonText}>Place Order</Text>
+        </TouchableOpacity>
+      
     
-       
+     </ScrollView>
      </View>
     
      
-     </View>
     
-     
-    </TouchableOpacity> 
     
-      </ScrollView>
-      </View>
+      
+      
     
     );
     }
            
-      );
-        
-        
-    
-      return(
-        <View style={{flex:1}}>
      
-         <FlatList
-               data={data}
-               renderItem={({item})=>{
-                 return renderList(item)
-               }}
-               keyExtractor={item=>item._id}
-               onRefresh={()=>fetchData()}
-               refreshing={loading}
-               />
-           
-        </View>
-      
-    ) 
- }  
 
 
     
@@ -132,70 +133,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor:'black'
   },
-  header:{
-    flexDirection: 'row',
-    marginBottom:5,
-    marginTop:10,
-    paddingBottom:5,
-    height:40,
-    paddingTop:5,
-    paddingLeft:5,
-  },
-   text:{
-    color:'#37af0c',
-    fontSize: 33,
-    paddingLeft:8,
-  },
-  searchfield:{
-    flexDirection:'row',
-    marginLeft:5,
-    paddingTop:14,
-    paddingBottom:10,
-  },
-   near:{
-    color:'#4a4b50',
-    fontSize:18,
-    paddingLeft:8,
-  },
-    sliderContainer: {
-    height: 200,
-    width: '90%',
-    marginTop: 10,
-    justifyContent: 'center',
-    alignSelf: 'center',
-    borderRadius: 8,
-  },
-  rate:{
-
-    flexDirection:'row',
-    marginTop:3
-  },
-
-  wrapper: {},
-
-  slide: {
-    flex: 1,
-    justifyContent: 'center',
-    backgroundColor: 'transparent',
-    borderRadius: 8,
-  },
-  sliderImage: {
-    height: '100%',
-    width: '100%',
-    alignSelf: 'center',
-    borderRadius: 8,
-  },
+  
    card: {
-    height: 100,
-    marginVertical: 10,
-    flexDirection: 'row',
-    shadowColor: 'limegreen',
-    shadowOffset: {width: 0, height: 1},
-    shadowOpacity: 0.8,
-    shadowRadius: 2,
-    elevation: 5,
-    backgroundColor: 'limegreen'
-  },
+     
+     height: '100%',
+    backgroundColor: '#9d9d9f'
+   },
   cardImgWrapper: {
     flex: 1,
     
@@ -204,35 +147,51 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
     alignSelf: 'center',
-    borderRadius: 8,
-    borderBottomRightRadius: 0,
-    borderTopRightRadius: 0,
+    borderRadius: 3,
+    
   },
   cardInfo: {
-    flex: 2,
+    
     padding: 10,
-    borderColor: 'limegreen',
-    borderWidth: 1,
-    borderLeftWidth: 0,
-    borderBottomRightRadius: 8,
-    borderTopRightRadius: 8,
-    backgroundColor: '#9d9d9f',
+    backgroundColor:'white'
+    
   },
   cardTitle: {
     fontWeight: 'bold',
+    fontSize: 20,
+    padding:10
   },
-  cardDetails: {
+  cardDetail1: {
     marginTop:3,
     fontSize: 12,
     color: '#444',
-    fontWeight:'bold'
+    fontWeight:'bold',
+    fontStyle:'italic',
+    padding:10
   },
-  texth:{
-    color:'#4a4b50',
-    fontSize: 13,
-    paddingLeft:8,
-    fontWeight:'bold'
-  }
+  cardDetails:{
+    fontWeight:'bold',
+    fontSize:16,
+    padding:10
+  },
+  buttonText: {
+    fontSize: 15,
+    fontWeight: '500',
+    color: '#6f836b',
+    textAlign: 'center',
+    
+  
+},
+button: {
+  width: '100%',
+  height:50,
+  backgroundColor:'#21680c',
+  borderRadius: 5,
+  marginVertical: 12,
+  paddingVertical: 12,
+  
+},
+  
 
 });
   

@@ -11,6 +11,8 @@ import Signin from './src/Signin';
 import Splashscreen from './src/Splashscreen';
 import PaymentMethod from './src/payment';
 import Detail from './src/details';
+import Onlinepay from './src/onlinepay/onlinepayment';
+import Myorder from './src/Myorders';
 
 import { NavigationContainer } from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
@@ -31,14 +33,15 @@ export default class app extends Component {
           <Drawer.Screen name="Login" component={Login}/>
           <Drawer.Screen name="Signin" component={Signin}/> 
           <Drawer.Screen name="Home" component={Homescreen} /> 
-          <Drawer.Screen name="My Orders" component={Login} />
+          <Drawer.Screen name="My Orders" component={Myorder} />
           <Drawer.Screen name="Wallet" component={Wallet} />
           <Drawer.Screen name="Account" component={MY_Profile} />
           <Drawer.Screen name="Support" component={Support} />
           <Drawer.Screen name="Profile" component={MY_Profile}/> 
           <Drawer.Screen name="Location" component={Location}/> 
-          {/* <Drawer.Screen name="My orders" component={Myorder}/> */}
+          <Drawer.Screen name="My orders" component={Myorder}/> 
           <Drawer.Screen name="Payment" component={PaymentMethod}/>
+          <Drawer.Screen name="Online Pay" component={Onlinepay}/>
           <Drawer.Screen name="Detail" component={Detail}/>
           </Drawer.Navigator>
       </NavigationContainer>
